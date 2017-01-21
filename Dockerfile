@@ -10,7 +10,10 @@ RUN apk add --no-cache wget build-base bsd-compat-headers libvorbis-dev libogg-d
   && cd /downloads/minidlna-1.1.5 \
   && ./configure \
   && make \
-  && make install
+  && make install \
+  && cd / \
+  && rm -rf /downloads/minidlna-1.1.5 \
+  && apk del wget build-base bsd-compat-headers
 
 # Add config file
 RUN mkdir /opt/Music -p \
